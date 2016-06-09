@@ -5,6 +5,7 @@
 using namespace std;
 
 //Assuming n-th disk is the bottommost disk
+//T(n) = 2T(n-1) + 1
 void toh(int n, char sourceTower, char auxiliaryTower, char destinationTower)
 {
 	//Base Case
