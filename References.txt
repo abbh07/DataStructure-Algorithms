@@ -1,0 +1,28 @@
+Graph:
+
+DFS
+Slides
+
+BFS
+Slides
+
+Dijkstra's Shortest Path:
+https://www.youtube.com/watch?v=lAXZGERcDf4
+
+Kruskal's Minimum Spanning Tree:
+https://www.youtube.com/watch?v=fAuF0EuZVCk
+
+Prim's Minimum Spanning Tree:
+https://www.youtube.com/watch?v=oP2-8ysT3QQ
+
+Topological Sort:
+https://www.youtube.com/watch?v=ddTC4Zovtbc
+
+Cycle in Undirected Graph Algorithm:
+https://www.youtube.com/watch?v=n_t0a_8H8VY
+
+Detect Cycle in Directed Graph Algorithm:
+https://www.youtube.com/watch?v=rKQaZuoUR4M
+
+Floyd Warshall All Pair Shortest Path:
+https://www.youtube.com/watch?v=LwJdNfdLF9s
