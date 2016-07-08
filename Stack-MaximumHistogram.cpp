@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/largest-rectangle
+
 #include <iostream>
 #include <stack>
 
