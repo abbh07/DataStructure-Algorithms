@@ -3,6 +3,7 @@
 * Reference: http://www.cplusplus.com/reference/queue/queue/
 */
 
+#include<bits/stdc++.h> 
 #include <iostream>
 #include <cstdlib>
 #include <queue>
