@@ -1,174 +1,108 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-//Min Heap
-class Heap
-{
-private:
-	int *arr;
-	int heapSize;
-	int arrSize;
-public:
-	Heap(int size)
-	{
-		arr = new int[size];
-		heapSize = 0;
-		arrSize = size;
-	}
-	int getLeftChildIndex(int);
-	int getRightChildIndex(int);
-	int getParentIndex(int);
-	int getMinimum();
-	bool isEmpty();
-	void heapifyUp(int);
-	void insert(int);
-	void heapifyDown(int);
-	void removeMinimum();
-	void display();
-	~Heap()
-	{
-		delete [] arr;
-	}
+int smallest = 0;
+int largest = 0;
 
-};
-
-int Heap::getLeftChildIndex(int nodeIndex)
+void max_heapify(vector<int> &v, int i, int *n)
 {
-	return (2*nodeIndex+1);
-}
-
-int Heap::getRightChildIndex(int nodeIndex)
-{
-	return (2*nodeIndex+2);
-}
-
-int Heap::getParentIndex(int nodeIndex)
-{
-	return ((nodeIndex-1)/2);
-}
-
-int Heap::getMinimum()
-{
-	if(isEmpty())
-	{
-		cout<<"Heap Empty!\n";
-		return -1;		
-	}
+	int left = 2*i;
+	int right = 2*i+1;
+	if(left <= *n && v[left] > v[i])
+		largest = left;
 	else
-		return arr[0];
-}
-
-bool Heap::isEmpty()
-{
-	if(heapSize == 0)
-	return true;
-	else
-	return false;	
-}
-
-void Heap::heapifyUp(int nodeIndex)
-{
-	int parentIndex;
-	int temp;
-	if(nodeIndex != 0)
+		largest = i;
+	if(right <= *n && v[right] > v[largest])
+		largest = right;
+	if(largest != i)
 	{
-		parentIndex = getParentIndex(nodeIndex);
-	}
-	while(nodeIndex != 0 && arr[parentIndex]>arr[nodeIndex])
-	{
-		temp = arr[nodeIndex];
-		arr[nodeIndex] = arr[parentIndex];
-		arr[parentIndex] = temp;
-		nodeIndex = parentIndex;
-		parentIndex = getParentIndex(nodeIndex);
+		swap(v[i],v[largest]);
+		max_heapify(v,largest,n);
 	}
 }
 
-void Heap::insert(int val)
+void min_heapify(vector<int> &v, int i, int *n)
 {
-	if(heapSize == arrSize)
-		cout<<"Heap Full!\n";
-	else
+	int left = 2*i;
+	int right = 2*i+1;
+	if(left <= *n && v[left] < v[i])
+		smallest = left;
+	else 
+		smallest = i;
+	if(right <= *n && v[right] < v[smallest])
+		smallest = right;
+
+	if(smallest != i)
 	{
-		heapSize++;
-		arr[heapSize-1] = val;
-		heapifyUp(heapSize-1);
+		swap(v[i],v[smallest]);
+		min_heapify(v,smallest,n);
 	}
 }
 
-void Heap::heapifyDown(int nodeIndex)
+void build_minheap(vector<int> &v, int *size)
 {
-	int leftChildIndex = getLeftChildIndex(nodeIndex);
-	int rightChildIndex = getRightChildIndex(nodeIndex);
-	int minIndex;
-	if(rightChildIndex >= arrSize)
+	for(int i=(*size)/2;i>=1;i--)
 	{
-		if(leftChildIndex >= arrSize)
-			return;
-		else
-			minIndex = leftChildIndex;
-	}
-	else
-	{
-		if(arr[leftChildIndex] <= arr[rightChildIndex])
-			minIndex = leftChildIndex;
-		else
-			minIndex = rightChildIndex;
-	}
-	int temp;
-	if(arr[nodeIndex] > arr[minIndex])
-	{
-		temp = arr[nodeIndex];
-		arr[nodeIndex] = arr[minIndex];
-		arr[minIndex] = temp;
-		heapifyDown(minIndex);
+		min_heapify(v,i,size);
 	}
 }
 
-void Heap::removeMinimum()
+void build_maxheap(vector<int> &v, int *size)
 {
-	if(isEmpty())
+	for(int i = (*size)/2;i>=1;i--)
 	{
-		cout<<"Heap Empty!\n";
-		return;
-	}
-	else
-	{
-		arr[0] = arr[heapSize-1];
-		heapSize--;
-		arrSize--;
-		if(heapSize > 0)
-			heapifyDown(0);
+		max_heapify(v,i,size);
 	}
 }
 
-void Heap::display()
+void heap_sort(vector<int> &v, int *size)
 {
-	for(int i=0;i<arrSize;i++)
+	int n = *size;
+	build_maxheap(v,size);
+	for(int i=n;i>=2;i--)
 	{
-		cout<<arr[i]<<"\t";
+		swap(v[1],v[i]);
+		n--;
+		max_heapify(v,1,&n);
 	}
-	cout<<endl;
 }
 
 int main()
 {
-	cout<<"Enter the size of the array\n";
-	int n;
-	cin>>n;
-	Heap h(n);
-	cout<<"Enter the elements of the array\n";
-	int val;
-	for(int i=0;i<n;i++)
+	cout<<"Enter the number of elements to store in the heap"<<endl;
+	int size;
+	cin>>size;
+	vector<int> heap(size+1);
+	for(int i=1;i<=size;i++)
 	{
-		cin>>val;
-		h.insert(val);
+		cin>>heap[i];
 	}
-	cout<<"Min Heap:\n";
-	h.display();	
-	cout<<"Min Heap after removing the minimum element:\n";
-	h.removeMinimum();
-	h.display();	
+
+	cout<<"Heap Sort:"<<endl;
+	heap_sort(heap,&size);
+	for(int i=1;i<=size;i++)
+	{
+		cout<<heap[i]<<" ";
+	}
+	cout<<endl;
+
+	cout<<"Max Heap:"<<endl;
+	build_maxheap(heap, &size);
+	for(int i=1;i<=size;i++)
+	{
+		cout<<heap[i]<<" ";
+	}
+	cout<<endl;
+	
+	cout<<"Min Heap:"<<endl;
+	build_minheap(heap, &size);	
+	for(int i=1;i<=size;i++)
+	{
+		cout<<heap[i]<<" ";
+	}
+	cout<<endl;
 	return 0;
 }
