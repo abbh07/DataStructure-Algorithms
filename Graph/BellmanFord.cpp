@@ -1,3 +1,12 @@
+//O(V E)
+/*
+4 5
+0 1 1
+0 2 3
+0 3 4
+1 2 2
+2 3 5
+*/
 #include <iostream>
 #include <vector>
 #include <algorithm>
