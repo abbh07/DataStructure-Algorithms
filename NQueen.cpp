@@ -37,7 +37,7 @@ bool nqueen(int n, int row, vector< pair<int,int> > &p)
 
 int main()
 {
-	int n = 4;
+	int n = 8;
 	vector< pair<int,int> > p(n,make_pair(0,0));
 	bool sol = nqueen(n,0,p);
 	if(sol)
