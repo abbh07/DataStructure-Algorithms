@@ -17,9 +17,9 @@ int coin_change(vector<int> &coin, int sum)
 			if(coin[j] <= i)
 			{
 				if(v[i-coin[j]] != INT_MAX)
-				{					
+				{
 					v[i] = min(v[i], v[i-coin[j]] + 1);
-					r[i] = j;	
+					r[i] = j;
 				}
 			}
 		}

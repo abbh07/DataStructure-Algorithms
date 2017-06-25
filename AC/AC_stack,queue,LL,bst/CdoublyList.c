@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<
+
 
 typedef struct node{
 int x;
@@ -108,8 +108,3 @@ if(x!=y)
 
 display(h3);
 }
-
-
-
-
-
