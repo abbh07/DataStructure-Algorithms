@@ -8,7 +8,7 @@ private:
 	int data;
 	bstNode *left;
 	bstNode *right;
-	
+
 public:
 	bstNode* Insert (bstNode*,int);
 	bool Search (bstNode*,int);
@@ -70,7 +70,7 @@ bool bstNode::Search(bstNode *root,int item)
 void bstNode::preorder(bstNode* root)
 {
 	if(root != NULL)
-	{	
+	{
 		cout<<root->data<<"\t";
 		preorder(root->left);
 		preorder(root->right);
@@ -91,8 +91,8 @@ void bstNode::postorder(bstNode* root)
 	if(root != NULL)
 	{
 		postorder(root->left);
-		cout<<root->data<<"\t";
 		postorder(root->right);
+		cout<<root->data<<"\t";
 	}
 
 }
@@ -275,7 +275,7 @@ bstNode* bstNode::printParent(bstNode* cur,int key,bstNode* prev)
 		cout<<prev->data<<endl;
 		return prev;
 	}
-	
+
 	printParent(cur->right,key,cur);
 	return NULL;
 
