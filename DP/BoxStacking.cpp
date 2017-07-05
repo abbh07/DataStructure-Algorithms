@@ -17,6 +17,7 @@ bool comparator(pair< pair<int,int>, int > &a, pair< pair<int,int>, int > &b)
 
 int get_max_height(vector< pair< pair<int,int>, int > > &v, int n)
 {
+	//Generating all 3*n permutations such that length is greater than width
 	vector< pair< pair<int,int>, int > > t(3*n);
 	int index = 0;
 	for(int i=0;i<n;i++)
@@ -40,6 +41,7 @@ int get_max_height(vector< pair< pair<int,int>, int > > &v, int n)
 		index++;
 	} 
 
+	//Sorting in descending order by length * width
 	sort(t.begin(),t.end(),comparator);
 
 	vector<int> height(3*n);

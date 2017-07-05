@@ -27,6 +27,7 @@ void doubly::insertEnd (int item)
 	{
 		head = temp;
 		temp->rlink = NULL;
+		temp->llink = NULL;
 	}
 	else
 	{

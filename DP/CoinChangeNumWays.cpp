@@ -34,7 +34,7 @@ int coin_change(int *coins, int total, int size)
 int main()
 {
 	int coins[] = {1,2,3};
-	int size = 3;
+	int size = sizeof(coins)/sizeof(coins[0]);
 	int total = 5;
 	cout<<coin_change(coins,total,size)<<endl;
 	return 0;

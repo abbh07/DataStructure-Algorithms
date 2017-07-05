@@ -16,7 +16,7 @@ int lps(string s)
 
 	for(int l = 1;l<len;l++)
 	{
-		for(int i= 0;i<len-l;i++)
+		for(int i = 0;i<len-l;i++)
 		{
 			int j = i + l;
 

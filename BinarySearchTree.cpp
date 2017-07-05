@@ -229,7 +229,7 @@ bstNode* bstNode::deleteNode (bstNode* root,int data)
 		else
 		{
 			root->data = findMin(root->right);
-			root->right = deleteNode(root->right,data);
+			root->right = deleteNode(root->right,root->data);
 		}
 	}
 	return root;

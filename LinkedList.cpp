@@ -112,7 +112,9 @@ public:
 			temp=temp->next;
 			count++;
 		}
+		node* t = temp->next;
 		temp->next=temp->next->next;
+		delete t;
 	}
 
 	void reverseList()

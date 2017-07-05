@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/*
 int coin_change(vector<int> &coin, int sum)
 {
 	int l = coin.size();
@@ -42,6 +43,41 @@ int coin_change(vector<int> &coin, int sum)
 	}
 	return v[sum];
 }
+*/
+
+int coin_change(vector<int> &v, int sum)
+{
+	int n = v.size();
+	vector< vector<int> > t(n+1,vector<int> (sum+1));
+	for(int i=1;i<=sum;i++)
+	{
+		t[0][i] = INT_MAX;
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=sum;j++)
+		{
+			if(j<v[i-1])
+			{
+				t[i][j] = t[i-1][j];
+			}
+			else
+			{
+				if(t[i][j - v[i-1]] == INT_MAX)
+				{
+					t[i][j] = t[i-1][j];
+				}
+				else
+				{
+					t[i][j] = min(t[i-1][j],1 + t[i][j - v[i-1]]);	
+				}
+			}
+		}
+	}
+	//returns INT_MAX if change not possible
+	return t[n][sum];
+}
+
 
 int main()
 {
