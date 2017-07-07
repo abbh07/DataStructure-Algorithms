@@ -14,46 +14,32 @@ bool string_interleaving(string &s1, string &s2, string &s3)
 		return false;
 	}
 	vector< vector<bool> > t(n1+1,vector<bool>(n2+1));
-	t[0][0] = true;
-	for(int i=1;i<=n1;i++)
+	
+	for(int i=0;i<=n1;i++)
 	{
-		if(s3[i-1] == s1[i-1])
+		for(int j=0;j<=n2;j++)
 		{
-			t[i][0] = t[i-1][0];
-		}
-		else
-		{
-			t[i][0] = false;
-		}
-	}
-
-	for(int i=1;i<=n2;i++)
-	{
-		if(s3[i-1] == s2[i-1])
-		{
-			t[0][i] = t[0][i-1];
-		}
-		else
-		{
-			t[0][i] = false;
-		}
-	}
-
-	for(int i=1;i<=n1;i++)
-	{
-		for(int j=1;j<=n2;j++)
-		{
-			if(s3[i+j-1] == s1[i-1])
+			if(i == 0 && j == 0)
 			{
-				t[i][j] = t[i-1][j];
+				t[i][j] = true;
 			}
-			else if(s3[i+j-1] == s2[j-1])
+			else if(i == 0)
 			{
-				t[i][j] = t[i][j-1];
+				if(s3[i+j-1] == s2[j-1])
+				{
+					t[i][j] = t[i][j-1];
+				}
+			}
+			else if(j == 0)
+			{
+				if(s3[i+j-1] == s1[i-1])
+				{
+					t[i][j] = t[i-1][j];
+				}
 			}
 			else
 			{
-				t[i][j] = false;
+				t[i][j] = (s3[i+j-1] == s1[i-1] ? t[i-1][j] : false) || (s3[i+j-1] == s2[j-1] ? t[i][j-1] : false);
 			}
 		}
 	}
@@ -62,9 +48,12 @@ bool string_interleaving(string &s1, string &s2, string &s3)
 
 int main()
 {
-	string s1 = "axy";
-	string s2 = "aab";
-	string s3 = "aaxaby";
+	//string s1 = "axy";
+	string s1 = "XXXXY";
+	//string s2 = "aab";
+	string s2 = "YXXXY";
+	//string s3 = "aaxaby";
+	string s3 = "XYXXXXYXXY";
 	cout<<string_interleaving(s1,s2,s3)<<"\n";
 	return 0;
 }

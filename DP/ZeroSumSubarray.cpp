@@ -7,7 +7,7 @@
 */
 #include <iostream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 
 using namespace std;
@@ -15,7 +15,7 @@ using namespace std;
 //O(n)
 int zero_sum_subarray(vector<int> &v, int n)
 {
-    map<int,int> m;
+    unordered_map<int,int> m;
     int sum = 0;
     int cnt = 0;
     for(int i=0;i<n;i++)

@@ -6,10 +6,6 @@ using namespace std;
 
 int getWays(int n, int m)
 {
-	if(n <= 1)
-	{
-		return n;
-	}
 	int t[n+1];
 	t[0] = t[1] = 1;
 	for(int i=2;i<=n;i++)
