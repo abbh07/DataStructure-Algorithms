@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //O(V E)
 /*
 4 5
@@ -9,7 +7,6 @@
 1 2 2
 2 3 5
 */
->>>>>>> cace9e25b84914acbd10dec73cc3be494692a162
 #include <iostream>
 #include <vector>
 #include <algorithm>

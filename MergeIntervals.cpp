@@ -24,7 +24,7 @@ void merge_intervals(vector< pair<int,int> > &v, int n)
 	{
 		if(j != 0 && v[j-1].second >= v[i].first)
 		{
-			while(v[j-1].second >= v[i].first)
+			while(j !=0 && v[j-1].second >= v[i].first)
 			{				
 				v[j-1].second = max(v[j-1].second,v[i].second);
 				v[j-1].first = min(v[j-1].first,v[i].first);

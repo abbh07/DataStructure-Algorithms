@@ -27,7 +27,6 @@ int edit_distance(string s1, string s2)
 			else
 			{
 				t[i][j] = min(t[i-1][j-1] , min(t[i][j-1], t[i-1][j])) + 1;
-				//t[i][j] = min(t[i][j], t[i-1][j-1]) + 1;
 			}
 		}
 	}

@@ -34,7 +34,6 @@ int lps(string s)
 			}
 		}
 	}
-
 	return t[0][len-1];
 }
 
