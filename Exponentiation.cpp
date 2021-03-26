@@ -18,7 +18,11 @@ int exponentiation_optimized(int x, int n)
 		int val = exponentiation_optimized(x,n/2);
 		return val*val;
 	}
-	return x*exponentiation_optimized(x,n-1);
+	else
+	{
+		int val = exponentiation_optimized(x,(n-1)/2);
+		return val*val*x;
+	}
 }
 
 int main()
