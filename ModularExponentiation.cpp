@@ -12,7 +12,11 @@ int modular_exponentiation(int x, int n, int m)
 		int val = modular_exponentiation(x,n/2,m);
 		return (val*val)%m;
 	}
-	return ((x%m) * (modular_exponentiation(x,n-1,m))%m)%m;
+	else
+    {
+        int val = modular_exponentiation(x, (n-1)/2, m);
+        return ((x%m)*(val%m)*(val%m))%m;
+    }
 }
 
 int main()
